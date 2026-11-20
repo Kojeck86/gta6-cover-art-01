@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Neon Coast Cover Studio</h1>
+    <p class="tagline">Turn any photo into GTA-style cover art. Offline — your photos never leave this machine.</p>
+  </div>
+  <div class="top-actions">
+    <button id="shuffleBtn" type="button" title="Random layout and grade">Shuffle</button>
+    <button id="undoBtn" type="button" disabled>Undo</button>
+    <button id="redoBtn" type="button" disabled>Redo</button>
+  </div>
+</header>
+
+<main class="studio">
+  <section class="controls" aria-label="Cover controls">
+    <div class="group">
+      <h2>1 · Photos</h2>
+      <label class="file-btn" for="photoInput">Add your photos…</label>
+      <input id="photoInput" type="file" accept="image/*" multiple hidden>
+      <p class="hint">Three sample scenes are loaded already. Click a panel on the preview to pick it, drag to move the photo, scroll to zoom.</p>
+    </div>
+
+    <div class="group">
+      <h2>2 · Layout</h2>
+      <div id="layoutRow" class="btn-row"></div>
+    </div>
+
+    <div class="group">
+      <h2>3 · Grade</h2>
+      <div id="gradeRow" class="btn-row"></div>
+    </div>
+
+    <div class="group">
+      <h2>4 · Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="NEON COAST" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" value="Vice City nights" maxlength="40">
+      </label>
+      <label class="field">Title size
+        <input id="titleSize" type="range" min="0.7" max="1.4" step="0.05" value="1">
+      </label>
+      <label class="field">Title colour
+        <select id="titleColor">
+          <option value="sunset">Sunset gradient</option>
+          <option value="white">White</option>
+          <option value="neon">Neon</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="group">
+      <h2>5 · Selected panel</h2>
+      <p class="hint" id="panelLabel">Panel 1 of 4</p>
+      <label class="field">Photo in this panel
+        <select id="panelPhoto"></select>
+      </label>
+      <label class="field">Zoom
+        <input id="panelZoom" type="range" min="0.6" max="3" step="0.05" value="1.05">
+      </label>
+      <label class="check"><input id="fillOne" type="checkbox" checked> One photo fills every panel</label>
+    </div>
+
+    <div class="group">
+      <h2>6 · Finish</h2>
+      <label class="check"><input id="frameToggle" type="checkbox" checked> White panel frames</label>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+    </div>
+
+    <div class="group">
+      <h2>7 · Export</h2>
+      <div id="sizeRow" class="btn-row"></div>
+      <div class="export-row">
+        <button id="exportBtn" type="button" class="primary">Export PNG</button>
+        <button id="exportAllBtn" type="button">Export all three sizes</button>
+      </div>
+      <p class="hint">Exports are 1080 × 1080, 1080 × 1350 and 1920 × 1080 PNGs, ready to post.</p>
+    </div>
+  </section>
+
+  <section class="stage" aria-label="Live preview">
+    <canvas id="preview" width="1080" height="1080"></canvas>
+    <p class="hint">Live preview — click a panel to select it, drag it to move its photo, scroll over it to zoom.</p>
+  </section>
+</main>
+
+<footer class="credits">
+  <p>All art and code in this app is original. Lettering uses Anton and Pacifico, shipped under the SIL Open Font License (see fonts/). Sample scenes are illustrations drawn in code. No Rockstar Games logo, artwork or font is used.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

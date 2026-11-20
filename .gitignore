@@ -1,0 +1,6 @@
+# Local hand-in output from `MAKEFUN_OUTPUT_DIR=out node main.ts`.
+# The grader builds its own; never commit it.
+out/
+
+# Editor and OS droppings.
+.DS_Store
